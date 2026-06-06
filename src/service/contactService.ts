@@ -4,7 +4,7 @@ import { type ContactFormData } from '../schema/contactSchema'
 
 export const envioFormulario = async (data: ContactFormData) => {
 
-    const response = await fetch("/api/contacto", {
+    const response = await fetch("/api/contactApi", {
         method:"POST",
         headers: {
             "Content-Type": "application/json",
