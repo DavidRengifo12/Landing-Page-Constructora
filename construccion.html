@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construcciones Integrales | Proyectos y Soluciones Profesionales</title>
+    <style>
+        /* --- VARIABLES Y PALETA DE COLORES CORPORATIVA --- */
+        :root {
+            --azul-oscuro: #0f2137; /* Color principal de confianza */
+            --naranja-acento: #ff6b00; /* Color de acción/conversión */
+            --naranja-hover: #e05e00;
+            --gris-fondo: #f4f6f9;
+            --texto-oscuro: #2c3e50;
+            --texto-mutado: #7f8c8d;
+            --blanco: #ffffff;
+        }
+
+        /* --- RESET Y CONFIGURACIÓN BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--blanco);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--naranja-acento);
+            color: var(--blanco);
+            padding: 14px 32px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--naranja-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            background-color: var(--azul-oscuro);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--naranja-acento);
+        }
+
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--naranja-acento);
+        }
+
+        /* --- SECCIÓN HERO (PORTADA) --- */
+        .hero {
+            background: linear-gradient(rgba(15, 33, 55, 0.88), rgba(15, 33, 55, 0.85)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 140px 0;
+            color: var(--blanco);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: #bdc3c7;
+        }
+
+        /* --- SECCIONES COMUNES --- */
+        section {
+            padding: 90px 0;
+        }
+
+        .bg-light {
+            background-color: var(--gris-fondo);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--texto-mutado);
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+            font-size: 1.05rem;
+        }
+
+        /* --- SERVICIOS PRINCIPALES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border: 1px solid #eef2f5;
+        }
+
+        .service-icon {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--naranja-acento);
+            font-size: 2rem;
+            padding: 15px;
+            border-radius: 6px;
+            line-height: 1;
+        }
+
+        .service-info h3 {
+            font-size: 1.3rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 10px;
+        }
+
+        .service-info p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .service-link {
+            color: var(--naranja-acento);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* --- SECCIÓN PROYECTOS: CARRUSEL ANTES Y DESPUÉS --- */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            min-height: 450px;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+            z-index: 1;
+        }
+
+        .carousel-item.active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        .project-split-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            background: var(--blanco);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .before-after-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .before-after-slider img.img-base {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-overlay-clip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .img-overlay-clip img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            max-width: none;
+        }
+
+        .slider-bar-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--naranja-acento);
+            pointer-events: none;
+            z-index: 2;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .label-slider {
+            position: absolute;
+            bottom: 20px;
+            background: rgba(15, 33, 55, 0.8);
+            color: white;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .label-before { right: 20px; }
+        .label-after { left: 20px; }
+
+        .slider-input {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            opacity: 0;
+            cursor: ew-resize;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+
+        /* Detalles de ficha técnica */
+        .project-details {
+            padding: 10px;
+        }
+
+        .project-tag {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--naranja-acento);
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .project-details h3 {
+            font-size: 1.8rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            color: var(--texto-mutado);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-meta {
+            background: var(--gris-fondo);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        /* Controles de flechas */
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 33, 55, 0.8);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-control:hover { background: var(--naranja-acento); }
+        .carousel-control.prev { left: -25px; }
+        .carousel-control.next { right: -25px; }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: var(--naranja-acento);
+            width: 24px;
+            border-radius: 10px;
+        }
+
+        /* --- ¿POR QUÉ ELEGIRNOS? --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            color: var(--azul-oscuro);
+            margin: 15px 0 10px 0;
+        }
+
+        .feature-card p {
+            color: var(--texto-mutado);
+            font-size: 0.9rem;
+        }
+
+        /* --- TESTIMONIOS --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--naranja-acento);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--azul-oscuro);
+            font-size: 0.9rem;
+        }
+
+        /* --- MARCAS / LOGOS --- */
+        .logos-section {
+            padding: 40px 0;
+            background-color: var(--blanco);
+            border-top: 1px solid #edf2f7;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .logos-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            opacity: 0.6;
+        }
+
+        .logos-grid span {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            letter-spacing: 2px;
+        }
+
+        /* --- LLAMADO A LA ACCIÓN FINAL --- */
+        .cta-section {
+            background: linear-gradient(rgba(15, 33, 55, 0.95), rgba(15, 33, 55, 0.95)),
+                        url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=80') center center/cover;
+            color: var(--blanco);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            margin-bottom: 35px;
+            color: #a0aec0;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0b1521;
+            color: #a0aec0;
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--blanco);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p { font-size: 0.95rem; line-height: 1.8; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        
+        .footer-col ul li a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .footer-col ul li a:hover { color: var(--naranja-acento); }
+
+        .footer-bottom {
+            border-top: 1px solid #1a2e44;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           --- ADAPTACIÓN RESPONSIVE TOTAL (MÓVILES, TABLETS Y ESCRITORIO) ---
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .project-split-grid { grid-template-columns: 1fr; gap: 25px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .carousel-control.prev { left: 5px; }
+            .carousel-control.next { right: 5px; }
+            .hero h1 { font-size: 2.6rem; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            header .container { flex-direction: column; gap: 15px; text-align: center; }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
+            .hero { padding: 80px 0; text-align: center; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
+            .service-card { flex-direction: column; text-align: center; align-items: center; padding: 30px 20px; }
+            .before-after-slider, .img-overlay-clip img { height: 280px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .logos-grid { justify-content: center; gap: 20px; }
+            .cta-section h2 { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 400px) {
+            nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+            nav a { margin: 0 5px; }
+            .before-after-slider, .img-overlay-clip img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <header>
+        <div class="container">
+            <div class="logo">CONSTRU<span>INTEGRALES</span></div>
+            <nav>
+                <a href="#servicios">Servicios</a>
+                <a href="#proyectos">Casos de Éxito</a>
+                <a href="#elegirnos">Beneficios</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PORTADA HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>CONSTRUIMOS TUS PROYECTOS, EDIFICAMOS TU FUTURO</h1>
+                <p>Servicios de construcción integrales de alta calidad para obras residenciales y comerciales con plazos y cotizaciones garantizadas por contrato.</p>
+                <a href="#contacto" class="btn">Solicita tu Presupuesto Gratis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="container">
+        <h2 class="section-title">Nuestros Servicios Principales</h2>
+        <p class="section-subtitle">Soluciones robustas respaldadas por ingenieros y arquitectos con altos estándares de seguridad.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <div class="service-info">
+                    <h3>Construcción Residencial</h3>
+                    <p>Diseño estructural y desarrollo de viviendas y complejos habitacionales llave en mano.</p>
+                    <a href="#contacto" class="service-link">Saber Más &rarr;</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <div class="service-info">
+                    <h3>Edificación Comercial</h3>
+                    <p>Oficinas eficientes, tiendas de retail y naves industriales adaptadas a tu modelo de negocio.</p>
+                    <a href="#contacto" class="service-link">Saber Más &rarr;</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <div class="service-info">
+                    <h3>Renovaciones & Reformas</h3>
+                    <p>Remodelación integral y estructural de espacios antiguos para darles una nueva vida comercial o residencial.</p>
+                    <a href="#contacto" class="service-link">Saber Más &rarr;</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <div class="service-info">
+                    <h3>Obra Civil e Infraestructura</h3>
+                    <p>Movimiento de tierras, pavimentación y estructuras de hormigón armado para proyectos públicos o privados.</p>
+                    <a href="#contacto" class="service-link">Saber Más &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVO: CARRUSEL ANTES Y DESPUÉS -->
+    <section id="proyectos" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Nuestra Trayectoria en Acción</h2>
+            <p class="section-subtitle">Desplaza el regulador central en cada obra para ver el cambio estructural y su respectiva información técnica.</p>
+
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    
+                    <!-- PROYECTO 1 -->
+                    <div class="carousel-item active">
+                        <div class="project-split-grid">
+                            <div class="before-after-slider">
+                                <img class="img-base" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Después - Residencial">
+                                <span class="label-slider label-before">Después</span>
+                                <div class="img-overlay-clip" style="width: 50%;">
+                                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80" alt="Antes - Residencial">
+                                    <span class="label-slider label-after">Antes</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="50" class="slider-input">
+                                <div class="slider-bar-divider" style="left: 50%;"></div>
+                            </div>
+                            <div class="project-details">
+                                <span class="project-tag">Residencial</span>
+                                <h3>Renovación Estructural Loft "Vista Verde"</h3>
+                                <p class="project-desc">Transformación de una edificación antigua en un complejo residencial moderno, reforzando bases estructurales y cimientos sismorresistentes.</p>
+                                <div class="project-meta">
+                                    <div><strong>📍 Ubicación:</strong> Zona Norte Centro</div>
+                                    <div><strong>⏱️ Plazo:</strong> 4 Meses (Entregado a tiempo)</div>
+                                    <div><strong>📐 Dimensión:</strong> 340 m²</div>
+                                    <div><strong>👷‍♂️ Reto:</strong> Refuerzo de vigas sin alterar fachadas históricas reglamentadas.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROYECTO 2 -->
+                    <div class="carousel-item">
+                        <div class="project-split-grid">
+                            <div class="before-after-slider">
+                                <img class="img-base" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Después - Corporativo">
+                                <span class="label-slider label-before">Después</span>
+                                <div class="img-overlay-clip" style="width: 50%;">
+                                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Antes - Corporativo">
+                                    <span class="label-slider label-after">Antes</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="50" class="slider-input">
+                                <div class="slider-bar-divider" style="left: 50%;"></div>
+                            </div>
+                            <div class="project-details">
+                                <span class="project-tag">Corporativo</span>
+                                <h3>Centro Corporativo & Oficinas Innova</h3>
+                                <p class="project-desc">Reingeniería de fachadas comerciales con muros de cristal termoacústicos y optimización de redes energéticas sustentables.</p>
+                                <div class="project-meta">
+                                    <div><strong>📍 Ubicación:</strong> Distrito Financiero</div>
+                                    <div><strong>⏱️ Plazo:</strong> 6 Meses</div>
+                                    <div><strong>📐 Dimensión:</strong> 1,200 m²</div>
+                                    <div><strong>👷‍♂️ Reto:</strong> Integrar sistemas de climatización invisible sin interferir en los ductos estructurales base.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CONTROLES DEL CARRUSEL -->
+                <button class="carousel-control prev" id="btnPrev">&#10094;</button>
+                <button class="carousel-control next" id="btnNext">&#10095;</button>
+
+                <div class="carousel-dots" id="carouselDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="elegirnos" class="container">
+        <h2 class="section-title">Experiencia y Compromiso</h2>
+        <p class="section-subtitle">Garantizamos solidez técnica en cada fase de tu inversión constructiva.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div style="font-size: 2.5rem;">Automated</div>
+                <h3>Experiencia</h3>
+                <p>Más de 15 años administrando obras de alta envergadura arquitectónica.</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 2.5rem;">💎</div>
+                <h3>Calidad</h3>
+                <p>Materiales estructurales certificados bajo estrictas normas de resistencia.</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 2.5rem;">📅</div>
+                <h3>Plazos</h3>
+                <p>Planificación mediante software avanzado. Entregas en la fecha pactada.</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 2.5rem;">🛡️</div>
+                <h3>Seguridad</h3>
+                <p>Garantía de cumplimiento de pólizas de seguridad laboral y civil.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <p class="section-subtitle">La opinión de quienes ya confiaron el desarrollo de sus infraestructuras en nosotros.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Cumplieron con el presupuesto de manera transparente y el nivel técnico del equipo en terreno fue impecable de principio a fin."</p>
+                    <div class="testimonial-author">Ing. Carlos Mendoza - Director de Proyectos Inmobiliarios</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"La remodelación corporativa se ejecutó sin detener las operaciones de nuestra empresa. Muy profesionales y organizados."</p>
+                    <div class="testimonial-author">Laura Gómez - Gerente General de Nexo S.A.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGOS -->
+    <div class="logos-section">
+        <div class="container logos-grid">
+            <span>EMPRESA_ALFA</span>
+            <span>CONSTRUCT-CON</span>
+            <span>URBAN_DESIGN</span>
+            <span>METRO_OBRAS</span>
+        </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <section id="contacto" class="cta-section">
+        <div class="container">
+            <h2>INICIA TU PROYECTO HOY</h2>
+            <h2>TRABAJEMOS JUNTOS</h2>
+            <p>Ponte en contacto con nuestros ingenieros para agendar un levantamiento técnico y cotización detallada de tu obra.</p>
+            <a href="mailto:proyectos@construintegrales.com" class="btn">Contactar Ahora</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>CONSTRUINTEGRALES</h4>
+                    <p>Líderes en ingeniería, diseño y construcción de espacios habitacionales, comerciales e industriales de alta resistencia.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#proyectos">Casos de Éxito</a></li>
+                        <li><a href="#elegirnos">Beneficios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto Técnico</h4>
+                    <p>📍 Av. Central No. 450, Oficina 302</p>
+                    <p>📞 +56 9 1234 5678</p>
+                    <p>✉️ contacto@construintegrales.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Construcciones Integrales. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGS DE INTERACTIVIDAD (SLIDERS Y CARRUSEL) -->
+    <script>
+        // --- CONTROL DE SLIDERS ANTES Y DESPUÉS ---
+        const sliders = document.querySelectorAll('.before-after-slider');
+
+        function syncImageWidth() {
+            sliders.forEach(slider => {
+                const clipContainer = slider.querySelector('.img-overlay-clip');
+                const clipImage = clipContainer.querySelector('img');
+                clipImage.style.width = `${slider.offsetWidth}px`;
+            });
+        }
+
+        sliders.forEach(slider => {
+            const input = slider.querySelector('.slider-input');
+            const clipContainer = slider.querySelector('.img-overlay-clip');
+            const divider = slider.querySelector('.slider-bar-divider');
+
+            input.addEventListener('input', (e) => {
+                const value = e.target.value;
+                clipContainer.style.width = `${value}%`;
+                if(divider) divider.style.left = `${value}%`;
+            });
+        });
+
+        window.addEventListener('resize', syncImageWidth);
+        window.addEventListener('load', syncImageWidth);
+
+        // --- CONTROL DEL CARRUSEL ---
+        const items = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.dot');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            if (index >= items.length) currentIndex = 0;
+            else if (index < 0) currentIndex = items.length - 1;
+            else currentIndex = index;
+
+            items.forEach((item, i) => {
+                if(i === currentIndex) item.classList.add('active');
+                else item.classList.remove('active');
+            });
+
+            dots.forEach((dot, i) => {
+                if(i === currentIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+
+            // Re-sincronizar el ancho interno de la imagen al deslizar
+            setTimeout(syncImageWidth, 50);
+        }
+
+        btnNext.addEventListener('click', () => showSlide(currentIndex + 1));
+        btnPrev.addEventListener('click', () => showSlide(currentIndex - 1));
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+    </script>
+</body>
+</html>

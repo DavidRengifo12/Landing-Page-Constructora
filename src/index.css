@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap');
+
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+:root {
+  --theme-title: #111827;
+  --theme-body: #4B5563;
+  --theme-bg: #FFFFFF;
+  --theme-card: #F8FAFC;
+  --theme-border: #E5E7EB;
+}
+
+.dark {
+  --theme-title: #F9FAFB;
+  --theme-body: #D1D5DB;
+  --theme-bg: #0F172A;
+  --theme-card: #1E293B;
+  --theme-border: #334155;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--theme-bg);
+  color: var(--theme-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--theme-title);
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollReverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
