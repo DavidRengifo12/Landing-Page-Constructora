@@ -5,40 +5,29 @@ import {
   FaDoorClosed,
   FaHome,
   FaHammer,
-  FaRulerCombined,
-  FaBuilding,
-  FaDraftingCompass,
-  FaTruck,
-  FaCheckCircle,
+ //FaRulerCombined,
+  //FaBuilding,
+  //FaDraftingCompass,
+  //FaTruck,
+  //FaCheckCircle,
 } from "react-icons/fa";
 
 export const ServicesData = [
-  {
-    icon: FaHardHat,
-    titleCard: "Obra Gris",
-    descriptionCard:
-      "Construcción estructural, cimentación, columnas, vigas y levantamiento de muros.",
-  },
 
   {
-    icon: FaPaintRoller,
-    titleCard: "Obra Blanca",
-    descriptionCard:
-      "Estuco, pintura, enchapes y acabados interiores listos para habitar.",
+    icon: FaHammer,
+    titleCard: "Construcción General",
+    descriptionCard:"Desarrollamos proyectos completos con materiales y mano de obra calificada.",
   },
-
   {
     icon: FaTools,
     titleCard: "Acabados de Obra",
-    descriptionCard:
-      "Detalles finales de alta calidad para interiores y exteriores.",
+    descriptionCard:"Detalles finales de alta calidad para interiores y exteriores.",
   },
-
   {
     icon: FaDoorClosed,
     titleCard: "Instalación de Puertas",
-    descriptionCard:
-      "Montaje profesional de puertas de madera, aluminio y seguridad.",
+    descriptionCard:"Montaje profesional de puertas de madera, aluminio y seguridad.",
   },
 
   {
@@ -49,93 +38,57 @@ export const ServicesData = [
   },
 
   {
-    icon: FaHammer,
-    titleCard: "Construcción General",
-    descriptionCard:
-      "Desarrollamos proyectos completos con materiales y mano de obra calificada.",
+    icon: FaHardHat,
+    titleCard: "Obra Gris",
+    descriptionCard:"Construcción estructural, cimentación, columnas, vigas y levantamiento de muros.",
   },
 
   {
+    icon: FaPaintRoller,
+    titleCard: "Obra Blanca",
+    descriptionCard:"Estuco, pintura, enchapes y acabados interiores listos para habitar.",
+  },
+
+
+ /* {
     icon: FaRulerCombined,
     titleCard: "Medición y Planos",
     descriptionCard:
       "Levantamiento de medidas y apoyo técnico para proyectos de construcción.",
-  },
+  },*/
 
-  {
+  /*{
     icon: FaBuilding,
     titleCard: "Proyectos Residenciales",
     descriptionCard:
       "Construcción y adecuación de viviendas, apartamentos y edificios.",
-  },
+  },*/
 
-  {
+ /* {
     icon: FaDraftingCompass,
     titleCard: "Diseño Arquitectónico",
     descriptionCard:
       "Diseños modernos adaptados a tus necesidades y presupuesto.",
-  },
+  },*/
 
-  {
+  /*{
     icon: FaTruck,
     titleCard: "Transporte de Material",
     descriptionCard:
       "Logística y transporte eficiente de materiales para tu obra.",
-  },
+  },*/
 
-  {
+  /*{
     icon: FaCheckCircle,
     titleCard: "Garantía y Calidad",
     descriptionCard:
       "Trabajos garantizados con altos estándares de calidad y cumplimiento.",
-  },
+  },*/
 ];
 
 
 //Informacion imagenes antes/despues
-export const projects = [
-  {
-    before:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
-    after:
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858",
-  },
 
-  {
-    before:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f",
-    after:
-      "https://images.unsplash.com/photo-1494526585095-c41746248156",
-  },
-
-  {
-    before:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
-    after:
-      "https://images.unsplash.com/photo-1448630360428-65456885c650",
-  },
-
-  {
-    before:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-    after:
-      "https://images.unsplash.com/photo-1460317442991-0ec209397118",
-  },
-
-  {
-    before:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-    after:
-      "https://images.unsplash.com/photo-1464890100898-a385f744067f",
-  },
-
-  {
-    before:
-      "https://images.unsplash.com/photo-1494526585095-c41746248156",
-    after:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
-  },
-]
 
 
 //CadrFeatures Data

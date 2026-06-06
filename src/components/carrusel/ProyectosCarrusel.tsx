@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import CarruselServicios from './CarruselServicios';
 import CarruselServicios2 from './CarruselServicios2';
 import type { Proyecto } from '../types/types';
+import {motion} from "framer-motion"
 
 interface Props {
   proyectos: Proyecto[];
@@ -48,19 +49,30 @@ export default function ProyectosCarrusel({ proyectos }: Props) {
   if (!proyectos.length) return null;
 
   return (
+    <div>
     <section
       id="proyectos"
       className="bg-slate-50 py-16 md:py-24 overflow-hidden"
     >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+        duration: 0.8,
+        delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+        viewport={{once:true}}
+      >
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="text-center mb-8 md:mb-12" >
           <h2 className="text-3xl md:text-4xl text-slate-900 uppercase tracking-wide">
-            Nuestra Trayectoria en Acción
+            Portafolio de Proyectos: Antes y Después
           </h2>
 
-          <p className="text-slate-700 max-w-2xl mx-auto mt-4">
-            Desplaza el regulador central en cada obra para ver el cambio estructural y su respectiva información técnica.
+          <p className="text-slate-700  mt-4 text-2xl md:text-xl">
+           Conoce algunas de las adecuaciones y proyectos que hemos realizado. Descubre cómo transformamos cada espacio a través de resultados visibles en su antes y después.
           </p>
         </div>
 
@@ -77,7 +89,7 @@ export default function ProyectosCarrusel({ proyectos }: Props) {
                 key={proyecto.id || idx}
                 className="w-full shrink-0 px-2"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center bg-white p-2 rounded-2xl shadow-sm border border-slate-100">
 
                   <div className="lg:col-span-7">
                     <CarruselServicios
@@ -128,8 +140,9 @@ export default function ProyectosCarrusel({ proyectos }: Props) {
             />
           ))}
         </div>
-
       </div>
+      </motion.div >
     </section>
+    </div>
   );
 }

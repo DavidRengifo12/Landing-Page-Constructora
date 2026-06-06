@@ -1,52 +1,31 @@
-import React, { useState } from "react"
 import toast from "react-hot-toast"
+import { contactSchema, type ContactFormData } from "../../schema/contactSchema"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { envioFormulario } from "../../service/contactService"
 
 
 export default function Formulario() {
-    const [loading, setLoading] = useState(false)
 
-    const handleSubmitForm = async(e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setLoading(true)
+  const onSubmit = async(data: ContactFormData) => {
+    try {
+      const result = await envioFormulario(data)
+      if(result.url){
+        window.open(result.url, "__blank")
+        toast.success("Enviando mensaje")
+        return
+      }
 
-        const formulario = new FormData(e.currentTarget)
-
-        const dataFormulario = {
-            nombre: formulario.get("nombre"),
-            email: formulario.get("email"),
-            descripcion: formulario.get("descripcion")
-            
-        }
-try {
-  const response = await fetch("/api/contacto", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(dataFormulario),
-  });
-
-  if (!response.ok) {
-    throw new Error("Error en la API");
-  }
-
-  const result = await response.json();
-
-  if (result.url) {
-    window.open(result.url, "_blank");
-    toast.success("Redirigiendo...");
-  } else {
-    toast.success("Mensaje enviado correctamente");
-  }
-
-} catch (error) {
-  console.error(error);
-  toast.error("Error al enviar formulario");
-} finally {
-  setLoading(false);
-}
+      toast.success("Mensaje enviado con exito")
+    } catch (error) {
+      console.error(error)
+      toast.error("Error al enviar mensaje")
     }
+  }
 
+    const {register, handleSubmit, formState: { errors, isSubmitting }} = useForm<ContactFormData>({
+      resolver: zodResolver(contactSchema)
+    })
 
   return (
     <div className="w-full max-w-xl xl:px-8 xl:w-5/12 ">
@@ -56,7 +35,7 @@ try {
             </h3>
 
             <form
-            onSubmit={handleSubmitForm}
+            onSubmit={handleSubmit(onSubmit)}
             >
                 <div className="mb-1 sm:mb-2">
                     <label
@@ -67,28 +46,18 @@ try {
                     </label>
                     <input
                       placeholder="Example: John-Doe"
-                      required
-                      type="text"
+                      {
+                        ...register("nombre")
+                      }
                       className="flex grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="nombre"
-                      name="nombre"
                     />
-                </div>
-                
-                <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="lastName"
-                      className="inline-block mb-1 font-medium"
-                    >
-                      Descripción
-                    </label>
-                    <textarea
-                      placeholder="Escribe tu mensaje aquí..."
-                      required
-                      className="flex grow w-full h-22 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="descripcion"
-                      name="descripcion"
-                    />
+                    {
+                      errors.nombre && (
+                        <p className="text-red-500 text-sm">
+                          {errors.nombre.message}
+                        </p>
+                      )
+                    }
                 </div>
 
                 <div className="mb-1 sm:mb-2">
@@ -103,18 +72,63 @@ try {
                       required
                       type="email"
                       className="flex grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      id="email"
-                      name="email"
+                      {
+                        ...register("email")
+                      }
                     />
+                    {
+                      errors.email && (
+                        <p className="text-red-500 text-sm">
+                          {errors.email.message}
+                        </p>
+                      )
+                    }
+                </div>
+
+                <div className="mb-1 sm:mb-2">
+                  <label htmlFor="phone">Numero de telefono</label>
+                  <input 
+                  placeholder="3156458791"
+                  className="flex grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:shadow-outline"
+                  {...register("phone")} 
+                  />
+                   {
+                    errors.phone &&(
+                      <p className="text-red-500 text-sm">
+                        {errors.phone.message}
+                      </p>
+                    )
+                  }
+                </div>
+                
+                <div className="mb-1 sm:mb-2">
+                    <label
+                      htmlFor="lastName"
+                      className="inline-block mb-1 font-medium"
+                    >
+                      Descripción
+                    </label>
+                    <textarea
+                      placeholder="Escribe tu mensaje aquí..."
+                      {...register("descripcion")}
+                      className="flex grow w-full h-22 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                    />
+                    {
+                      errors.descripcion && (
+                        <p className="text-red-500 text-sm">
+                          {errors.descripcion.message}
+                        </p>
+                      )
+                    }
                 </div>
 
                 <div className="mt-4 mb-2 sm:mb-4">
                     <button
                       type="submit"
-                      disabled={loading}
+                      disabled={isSubmitting}
                       className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wid transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-gray-800 text-white"
                     >
-                      {loading ? "Enviando mensaje..." : "Enviar Mensaje"}
+                      {isSubmitting ? "Enviando mensaje..." : "Enviar Mensaje"}
                     </button>
                 </div>
 

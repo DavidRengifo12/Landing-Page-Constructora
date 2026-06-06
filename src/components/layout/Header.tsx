@@ -3,11 +3,11 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 
 const Navbar = [
-  { href: "inicio", label: "Inicio" },
+//  { href: "inicio", label: "Inicio" },
+{ href: "servicios", label: "Servicios" },
   { href: "proyectos", label: "Proyectos" },
-  { href: "nosotros", label: "Nosotros" },
-  { href: "servicios", label: "Servicios" },
-  { href: "contacto", label: "Contacto" },
+  { href: "testimonios", label: "Testimonios" },
+  { href: "contacto", label: "Contactanos" },
 ];
 
 export default function Header() {
@@ -30,11 +30,11 @@ export default function Header() {
     <header
       className={`fixed w-full z-50 transition-all duration-300 border-b border-slate-200 ${
         scroll
-          ? "backdrop-blur-md bg-white/80 shadow-lg"
+          ? "backdrop-blur-md bg-white/10 shadow-lg"
           : "bg-white"
       }`}
     >
-      <div className="mx-auto max-w-7xl flex items-center justify-between py-4 px-4">
+      <div className="mx-auto max-w-7xl flex items-center justify-between py-1 px-4">
         {/* LOGO */}
         <div className="flex items-center gap-3">
           <img

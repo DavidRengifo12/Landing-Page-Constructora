@@ -29,7 +29,7 @@ body {
   color: var(--theme-body);
 }
 
-h1,
+.h1,
 h2,
 h3,
 h4,
@@ -43,6 +43,7 @@ h6 {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/**/
 @keyframes scroll {
   from {
     transform: translateX(0);
@@ -58,5 +59,18 @@ h6 {
   }
   to {
     transform: translateX(0);
+  }
+}
+
+/*Animation bounce of button*/
+
+@keyframes bounce {
+  0%, 100% {
+    transform:translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+  50%{
+    transform:none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
   }
 }

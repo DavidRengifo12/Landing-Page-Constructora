@@ -1,9 +1,18 @@
 import { FaDoorClosed, FaHardHat, FaHome, FaMapMarkerAlt, FaPaintRoller } from "react-icons/fa";
 import Formulario from "./Form";
+import {motion} from "framer-motion"
+
 
 
 export const Contactanos = () => {
   return (
+    <div>
+    <motion.section
+    initial={{opacity: 0, x:-50}}
+    whileInView={{ opacity: 1, x:0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: false }}
+    >
     <div className="relative" id="contacto">
       <img
         src="https://images.pexels.com/photos/3747463/pexels-photo-3747463.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
@@ -50,10 +59,16 @@ export const Contactanos = () => {
                 </li>
               </ul>
             </div>
+            
             <Formulario />
           </div>
+          
         </div>
+        
       </div>
+      
+    </div>
+    </motion.section>
     </div>
   );
 };

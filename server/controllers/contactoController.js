@@ -2,7 +2,7 @@
 
 export const sendWhatsapp = async (req, res) => {
   try {
-    const { nombre, email, descripcion } = req.body;
+    const { nombre, email, phone,  descripcion } = req.body;
 
     if (!nombre || !email || !descripcion) {
       return res.status(400).json({
@@ -14,6 +14,7 @@ export const sendWhatsapp = async (req, res) => {
     Hola, me gustaría contactarlos para solicitar más información sobre sus servicios. Aquí están mis detalles:
 
     Nombre: ${nombre}
+    Telefono: ${phone}
     Email: ${email}
     Descripción: ${descripcion}
     `;
