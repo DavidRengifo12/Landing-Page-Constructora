@@ -4,6 +4,7 @@
   FaFacebook,
 } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";*/}
+import { Link } from "react-scroll";
 
 export default function Footer() {
   const soluciones = [
@@ -15,13 +16,13 @@ export default function Footer() {
     "Proyectos comerciales",
   ];
 
-  const company = [
-    "Inicio",
-    "Proyectos",
-    "Nosotros",
-    "Servicios",
-    "Contactanos"
-  ];
+  const Footer = [
+  { href: "inicio", label: "Inicio" },
+  { href: "proyectos", label: "Proyectos" },
+  { href: "nosotros", label: "Nosotros" },
+  { href: "servicios", label: "Servicios" },
+  { href: "contacto", label: "Contacto" },
+];
 
   return (
     <footer className="border-t border-border-ui bg-bg-main pt-20 pb-10">
@@ -68,9 +69,19 @@ export default function Footer() {
             </h4>
 
             <ul className="flex flex-col gap-2 text-sm text-text-body">
-              {company.map((item) => (
-                <li key={item}>
-                  <a href="/">{item}</a>
+              {Footer.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
+                    smooth
+                    spy
+                    duration={800}
+                    offset={-40}
+                    activeClass="text-amber-500"
+                    className="cursor-pointer px-3 py-2 text-slate-800 transition-colors hover:text-slate-900"
+                  >
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>

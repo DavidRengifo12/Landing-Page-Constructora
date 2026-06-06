@@ -3,7 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 
 const Navbar = [
-  { href: "cards", label: "Inicio" },
+  { href: "inicio", label: "Inicio" },
   { href: "proyectos", label: "Proyectos" },
   { href: "nosotros", label: "Nosotros" },
   { href: "servicios", label: "Servicios" },

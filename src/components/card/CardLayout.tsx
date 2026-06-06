@@ -5,9 +5,9 @@ import Card from "./Card";
 
 export default function CardLayout() {
   return (
-    <section className=" py-16  dark:text-white">
+    <section className=" py-16  dark:text-white" id="servicios">
       <div className="mx-auto mb-12 max-w-7xl px-6 text-center">
-        <h2 className="relative inline-block pb-4 text-2xl md:text-4xl">Conoce Nuestros Servicios</h2>
+        <h2 className="relative inline-block pb-4 text-2xl md:text-4xl" >Conoce Nuestros Servicios</h2>
         <p className="text-lg text-slate-600 ">
           Ofrecemos soluciones integrales en construcción, remodelación y adecuación de espacios, combinando experiencia, calidad y compromiso en cada proyecto. Nuestro objetivo es transformar ideas en obras funcionales, seguras y duraderas que superen las expectativas de nuestros clientes.
         </p>
