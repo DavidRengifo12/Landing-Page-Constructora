@@ -19,7 +19,7 @@ export default function Footer() {
   const Footer = [
   { href: "inicio", label: "Inicio" },
   { href: "proyectos", label: "Proyectos" },
-  { href: "nosotros", label: "Nosotros" },
+ // { href: "nosotros", label: "Nosotros" },
   { href: "servicios", label: "Servicios" },
   { href: "contacto", label: "Contacto" },
 ];

@@ -153,15 +153,17 @@ export const datosProyectosMock = [
     "Garantizar la estabilidad y durabilidad de la estructura liviana, integrando instalaciones eléctricas e hidrosanitarias sin afectar la distribución arquitectónica del proyecto."
 },
   {
-    id: 3,
-    categoria: "Infraestructura",
-    titulo: "Muro de contencion parcela en piedra de rio",
-    descripcion: "Adecuación integral de layouts y acabados sanitarios conforme a normativas internacionales para procesamiento de alimentos a gran escala.",
-    imgAntes: "parcela.jpeg",
-    imgDespues: "parcela2.jpeg",
-    ubicacion: "Parcela-Calibio Ramal-Valverde",
-    plazo: "1 Mes",
-    dimension: "50 m²",
-    reto: "Instalación de trampas de grasa masivas y pisos de resina epóxica en jornadas nocturnas."
+  id: 3,
+  categoria: "Infraestructura",
+  titulo: "Muro de Contención en Parcela con Piedra de Río",
+  descripcion:
+    "Construcción de un muro de contención en una parcela utilizando piedra de río, diseñado para estabilizar el terreno, prevenir la erosión y mejorar la seguridad y funcionalidad del espacio.",
+  imgAntes: "parcela.jpeg",
+  imgDespues: "parcela2.jpeg",
+  ubicacion: "Parcela-Calibio Ramal-Valverde",
+  plazo: "1 Mes",
+  dimension: "50 m²",
+  reto:
+    "Adaptar la construcción a las condiciones naturales del terreno, garantizando la resistencia y durabilidad de la estructura mediante la correcta selección y colocación de piedra de río."
   }
 ];

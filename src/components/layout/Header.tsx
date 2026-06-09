@@ -1,3 +1,4 @@
+import {motion, AnimatePresence} from "framer-motion"
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
@@ -6,7 +7,7 @@ const Navbar = [
 //  { href: "inicio", label: "Inicio" },
 { href: "servicios", label: "Servicios" },
   { href: "proyectos", label: "Proyectos" },
-  { href: "testimonios", label: "Testimonios" },
+//  { href: "testimonios", label: "Testimonios" },
   { href: "contacto", label: "Contactanos" },
 ];
 
@@ -34,9 +35,12 @@ export default function Header() {
           : "bg-white"
       }`}
     >
-      <div className="mx-auto max-w-7xl flex items-center justify-between py-1 px-4">
+      <div className="mx-auto max-w-7xl flex items-center justify-between py-1 px-7">
         {/* LOGO */}
-        <div className="flex items-center gap-3">
+        <motion.div 
+        className="flex items-center gap-0"
+        whileHover={{scale:1.03}}
+        >
           <img
             src="LogoWeb2.png"
             alt="logo"
@@ -45,7 +49,7 @@ export default function Header() {
           <p className="text-slate-900 font-bold text-xl">
             Manos a la obra
           </p>
-        </div>
+        </motion.div>
 
         {/* BOTÓN HAMBURGUESA */}
         <button
@@ -59,9 +63,11 @@ export default function Header() {
         <nav className="hidden lg:block">
           <ul className="flex gap-4">
             {Navbar.map((item) => (
-              <li
+              <motion.li
                 key={item.label}
-                className="relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full"
+                whileHover={{y: -2}}
+                transition={{ duration: 0.2}}
+                className="relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-slate-700 after:transition-all after:duration-300 hover:after:w-full"
               >
                 <Link
                   to={item.href}
@@ -74,15 +80,21 @@ export default function Header() {
                 >
                   {item.label}
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </nav>
       </div>
 
       {/* MENÚ MOBILE */}
+      <AnimatePresence>
       {open && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-md shadow-md">
+        <motion.div 
+        initial={{opacity:0, height:0}}
+        animate={{opacity:1, height:"auto"}}
+        exit={{ opacity: 0, height: 0 }}
+        transition={{duration: 0.3}}
+        className="lg:hidden bg-white/95 backdrop-blur-md shadow-md ">
           <ul className="flex flex-col items-center gap-4 py-4">
             {Navbar.map((item) => (
               <li key={item.label}>
@@ -101,8 +113,9 @@ export default function Header() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </header>
   );
 }

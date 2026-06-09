@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 export default function HeroSection() {
   return (
-    <div>
+    <div id="inicio">
     <motion.section
       initial={{ opacity: 0, x:-50}}
       whileInView={{ opacity: 1, x:0 }}
@@ -18,8 +18,8 @@ export default function HeroSection() {
     >
       <article className="w-full">
         <div className="relative z-10 items-center px-12 text-center">
-            <h1 className="text-4xl md:text-4xl lg:text-6xl text-white font-semibold mb-8">Construimos sus ideas con calidad, seriedad y cumplimiento</h1>
-            <p className="text-white text-2xl md:text-3xl">Maestro de obra Luis Rengifo - Más de 15 Años de experiencia en Popayán, Bogota, Cali..</p>
+            <h1 className="text-4xl md:text-4xl lg:text-6xl text-white/95 font-semibold mb-8">Construimos sus ideas con calidad, seriedad y cumplimiento</h1>
+            <p className="text-white/95 text-2xl md:text-3xl">Maestro de obra Luis Rengifo - Más de 15 Años de experiencia en Popayán, Bogota, Cali..</p>
             <motion.button
             className="bg-slate-600 text-white font-bold py-2 px-4 rounded mt-8"
             whileHover={{ scale: 1.2 }}

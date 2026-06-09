@@ -45,6 +45,7 @@ export default function Formulario() {
                       Nombre Completo
                     </label>
                     <input
+                    required
                       placeholder="Example: John-Doe"
                       {
                         ...register("nombre")
@@ -88,6 +89,7 @@ export default function Formulario() {
                 <div className="mb-1 sm:mb-2">
                   <label htmlFor="phone">Numero de telefono</label>
                   <input 
+                  required
                   placeholder="3156458791"
                   className="flex grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:shadow-outline"
                   {...register("phone")} 
@@ -109,6 +111,7 @@ export default function Formulario() {
                       Descripción
                     </label>
                     <textarea
+                    required
                       placeholder="Escribe tu mensaje aquí..."
                       {...register("descripcion")}
                       className="flex grow w-full h-22 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
@@ -126,7 +129,7 @@ export default function Formulario() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wid transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-gray-800 text-white"
+                      className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wid transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 hover:cursor-pointer focus:shadow-outline focus:outline-none bg-gray-800 text-white"
                     >
                       {isSubmitting ? "Enviando mensaje..." : "Enviar Mensaje"}
                     </button>
